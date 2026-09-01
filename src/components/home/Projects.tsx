@@ -44,7 +44,6 @@ const projects: Project[] = [
   },
 ];
 
-// Durasi perpindahan otomatis (dalam detik)
 const AUTO_PLAY_DURATION = 5;
 
 export default function Projects() {
@@ -59,11 +58,11 @@ export default function Projects() {
   const handlePrev = () => {
     setDirection(-1);
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? projects.length - 1 : prevIndex - 1,
+      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
     );
   };
 
-  // Auto Play Timer: otomatis pindah slide ketika timer selesai
+  // Auto-play timer
   useEffect(() => {
     const timer = setTimeout(() => {
       handleNext();
@@ -72,9 +71,11 @@ export default function Projects() {
     return () => clearTimeout(timer);
   }, [currentIndex]);
 
+  const activeProject = projects[currentIndex];
+
   const slideVariants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 50 : -50,
+      x: direction > 0 ? 60 : -60,
       opacity: 0,
     }),
     center: {
@@ -82,20 +83,18 @@ export default function Projects() {
       opacity: 1,
     },
     exit: (direction: number) => ({
-      x: direction < 0 ? 50 : -50,
+      x: direction < 0 ? 60 : -60,
       opacity: 0,
     }),
   };
 
-  const activeProject = projects[currentIndex];
-
   return (
     <section
       id="Projects"
-      className="relative flex h-screen w-full flex-col justify-center overflow-hidden px-6 py-8 md:py-12"
+      className="relative flex h-screen w-full flex-col justify-between overflow-hidden px-6 py-8 md:py-12"
       style={{ backgroundColor: "var(--putih)", color: "var(--hitam)" }}
     >
-      <div className="mx-auto flex h-full max-w-6xl flex-col justify-between">
+      <div className="mx-auto flex h-full w-full max-w-6xl flex-col justify-between">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -109,11 +108,8 @@ export default function Projects() {
           </h2>
         </motion.div>
 
-        {/* Card Container */}
-        <div
-          className="relative my-auto flex flex-1 items-center overflow-hidden rounded-3xl p-5 sm:p-8 md:p-10"
-          style={{ backgroundColor: "var(--hitam)", color: "var(--putih)" }}
-        >
+        {/* Card Container (Presisi di Tengah) */}
+        <div className="relative my-auto flex w-full flex-1 items-center justify-center overflow-hidden">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={currentIndex}
@@ -123,42 +119,48 @@ export default function Projects() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="grid w-full grid-cols-1 items-center gap-6 py-4 md:grid-cols-12 md:gap-8"
+              className="relative flex w-full items-center overflow-hidden rounded-3xl p-5 sm:p-8 md:p-10"
+              style={{
+                backgroundColor: "var(--hitam)",
+                color: "var(--putih)",
+              }}
             >
-              {/* Image Left */}
-              <div className="overflow-hidden rounded-2xl md:col-span-6">
-                <motion.img
-                  src={activeProject.image}
-                  alt={activeProject.title}
-                  className="h-[200px] w-full object-cover sm:h-[200px] md:h-[240px] lg:h-[270px]"
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.4 }}
-                />
-              </div>
+              <div className="grid w-full grid-cols-1 items-center gap-6 py-2 md:grid-cols-12 md:gap-8">
+                {/* Image Left */}
+                <div className="overflow-hidden rounded-2xl md:col-span-6">
+                  <motion.img
+                    src={activeProject.image}
+                    alt={activeProject.title}
+                    className="h-[200px] w-full object-cover sm:h-[220px] md:h-[250px] lg:h-[270px]"
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </div>
 
-              {/* Content Right */}
-              <div className="flex flex-col justify-center md:col-span-6">
-                <span className="text-xs font-light text-neutral-400 sm:text-sm">
-                  {activeProject.category}
-                </span>
+                {/* Content Right */}
+                <div className="flex flex-col justify-center md:col-span-6">
+                  <span className="text-xs font-light text-neutral-400 sm:text-sm">
+                    {activeProject.category}
+                  </span>
 
-                <h3 className="mt-1 text-2xl font-medium sm:text-3xl md:text-4xl">
-                  {activeProject.title}
-                </h3>
+                  <h3 className="mt-1 text-2xl font-medium sm:text-3xl md:text-4xl">
+                    {activeProject.title}
+                  </h3>
 
-                <p className="mt-3 text-xs font-light leading-relaxed text-neutral-300 sm:text-sm">
-                  {activeProject.description}
-                </p>
+                  <p className="mt-3 text-xs font-light leading-relaxed text-neutral-300 sm:text-sm">
+                    {activeProject.description}
+                  </p>
 
-                <div className="mt-6">
-                  <a
-                    href={activeProject.link}
-                    className="group inline-flex items-center gap-2 text-xs font-medium transition-colors hover:opacity-80 sm:text-sm"
-                    style={{ color: "var(--putih)" }}
-                  >
-                    View Case Study
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                  </a>
+                  <div className="mt-6">
+                    <a
+                      href={activeProject.link}
+                      className="group inline-flex items-center gap-2 text-xs font-medium transition-colors hover:opacity-80 sm:text-sm"
+                      style={{ color: "var(--putih)" }}
+                    >
+                      View Case Study
+                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>

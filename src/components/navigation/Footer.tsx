@@ -1,11 +1,17 @@
 import { motion } from "framer-motion";
+import { scrollToSection } from "./scrollToSection";
 
-const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Project", href: "#project" },
-  { name: "Skills", href: "#skills" },
-  { name: "Education", href: "#education" },
+interface NavLink {
+    name: string;
+    targetId: string;
+}
+
+const navLinks: NavLink[] = [
+  { name: "Home", targetId: "Home" },
+  { name: "About", targetId: "About" },
+  { name: "Project", targetId: "Projects" },
+  { name: "Skills", targetId: "Skills" },
+  { name: "Education", targetId: "Education" },
 ];
 
 export default function Footer() {
@@ -51,14 +57,14 @@ export default function Footer() {
           >
             {navLinks.map((link, index) => (
               <li key={index}>
-                <motion.a
-                  href={link.href}
+                <motion.button
+                  onClick={() => scrollToSection(link.targetId)}
                   whileHover={{ x: 10 }}
                   transition={{ duration: 0.2 }}
-                  className="inline-block text-2xl font-normal text-neutral-300 transition-colors hover:text-white sm:text-3xl md:text-4xl"
+                  className="inline-block text-left text-2xl font-normal text-neutral-300 transition-colors hover:text-white sm:text-3xl md:text-4xl"
                 >
                   {link.name}
-                </motion.a>
+                </motion.button>
               </li>
             ))}
           </motion.ul>

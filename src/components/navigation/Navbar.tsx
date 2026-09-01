@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { scrollToSection } from "./scrollToSection";
 
 interface NavLink {
     name: string;
@@ -18,12 +19,9 @@ const navLinks: NavLink[] = [
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
-    const scrollToSection = (id: string) => {
+    const handleScroll = (id: string) => {
         setIsOpen(false);
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
+        scrollToSection(id);
     };
 
     return (
@@ -32,7 +30,7 @@ export default function Navbar() {
             <div className="flex w-[320px] items-center justify-between rounded-2xl bg-[#181A17] px-5 py-3 text-[#F4F4F4] shadow-xl sm:w-[360px]">
                 {/* Logo Nama dengan Highlight Biru di Belakang Teks 'ifha' */}
                 <button
-                    onClick={() => scrollToSection("Home")}
+                    onClick={() => handleScroll("Home")}
                     className="text-lg font-bold tracking-tight text-[#F4F4F4] transition-opacity hover:opacity-80"
                 >
                     Jho<span className="bg-[var(--biru)] px-0.5 text-white">ifha</span>
@@ -87,7 +85,7 @@ export default function Navbar() {
                                     initial={{ opacity: 0, x: -10 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: index * 0.04, duration: 0.2 }}
-                                    onClick={() => scrollToSection(link.targetId)}
+                                    onClick={() => handleScroll(link.targetId)}
                                     className="w-full text-left rounded-xl px-4 py-2.5 text-base font-semibold text-white/90 transition-colors hover:bg-white/10 hover:text-white"
                                 >
                                     {link.name}
