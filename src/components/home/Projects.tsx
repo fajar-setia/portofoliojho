@@ -49,20 +49,32 @@ const AUTO_PLAY_DURATION = 5;
 export default function Projects() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [direction, setDirection] = useState<number>(1);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   const handleNext = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
     setDirection(1);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
   };
 
   const handlePrev = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
     setDirection(-1);
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? projects.length - 1 : prevIndex - 1
     );
   };
 
-  // Auto-play timer
+  const handleBarClick = (index: number) => {
+    if (isAnimating || index === currentIndex) return;
+    setIsAnimating(true);
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+  };
+
+  // Auto-play Timer (Perpindahan Otomatis)
   useEffect(() => {
     const timer = setTimeout(() => {
       handleNext();
@@ -108,9 +120,13 @@ export default function Projects() {
           </h2>
         </motion.div>
 
-        {/* Card Container (Presisi di Tengah) */}
+        {/* Card Container */}
         <div className="relative my-auto flex w-full flex-1 items-center justify-center overflow-hidden">
-          <AnimatePresence mode="wait" custom={direction}>
+          <AnimatePresence 
+            mode="wait" 
+            custom={direction} 
+            onExitComplete={() => setIsAnimating(false)}
+          >
             <motion.div
               key={currentIndex}
               custom={direction}
@@ -169,16 +185,14 @@ export default function Projects() {
 
         {/* Navigation & Progress Bar Bottom */}
         <div className="flex shrink-0 items-center justify-between gap-4 pt-4">
-          {/* Progress Bars */}
-          <div className="flex flex-1 items-center gap-3">
+          {/* Progress Bars (Dilengkapi key={currentIndex} agar animasi berjalan otomatis saat slide berganti) */}
+          <div key={currentIndex} className="flex flex-1 items-center gap-2.5 md:flex-none">
             {projects.map((_, index) => (
               <button
                 key={index}
-                onClick={() => {
-                  setDirection(index > currentIndex ? 1 : -1);
-                  setCurrentIndex(index);
-                }}
-                className="h-2 flex-1 overflow-hidden rounded-full bg-neutral-300/60 transition-colors"
+                disabled={isAnimating}
+                onClick={() => handleBarClick(index)}
+                className="h-2 flex-1 overflow-hidden rounded-full bg-[#DFDFDF] transition-colors md:h-6 md:w-[295px] md:flex-none"
               >
                 <motion.div
                   className="h-full rounded-full"
@@ -193,7 +207,7 @@ export default function Projects() {
                         : "0%",
                   }}
                   transition={{
-                    duration: index === currentIndex ? AUTO_PLAY_DURATION : 0.3,
+                    duration: index === currentIndex ? AUTO_PLAY_DURATION : 0.2,
                     ease: index === currentIndex ? "linear" : "easeInOut",
                   }}
                 />
@@ -202,20 +216,22 @@ export default function Projects() {
           </div>
 
           {/* Arrow Navigation */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button
+              disabled={isAnimating}
               onClick={handlePrev}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 transition-colors hover:bg-neutral-200 active:scale-95 sm:h-11 sm:w-11"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--hitam)] transition-colors hover:bg-neutral-200 active:scale-95 disabled:pointer-events-none disabled:opacity-50 md:h-[64px] md:w-[64px]"
               aria-label="Previous Project"
             >
-              <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
+              <ArrowLeft className="h-4 w-4 md:h-6 md:w-6" />
             </button>
             <button
+              disabled={isAnimating}
               onClick={handleNext}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 transition-colors hover:bg-neutral-200 active:scale-95 sm:h-11 sm:w-11"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--hitam)] transition-colors hover:bg-neutral-200 active:scale-95 disabled:pointer-events-none disabled:opacity-50 md:h-[64px] md:w-[64px]"
               aria-label="Next Project"
             >
-              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+              <ArrowRight className="h-4 w-4 md:h-6 md:w-6" />
             </button>
           </div>
         </div>
