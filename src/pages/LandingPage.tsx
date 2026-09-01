@@ -31,7 +31,7 @@ export default function LandingPage() {
 
     const snap = new Snap(lenis, {
       type: "proximity",
-      distanceThreshold: "50%", // magnet: tarik ke section yang melewati setengah layar
+      distanceThreshold: "30%", // magnet: tarik ke section yang melewati setengah layar
       duration: 0.6,
       easing: (t: number) => 1 - Math.pow(1 - t, 4),
       debounce: 50,
@@ -46,6 +46,14 @@ export default function LandingPage() {
     };
 
     syncSections();
+
+    // Expose sync/unsync supaya scrollToSection bisa disable snap sementara
+    (window as unknown as { __unsyncSnap?: () => void; __resyncSnap?: () => void }).__unsyncSnap = () => {
+      unsubscribeSections();
+    };
+    (window as unknown as { __unsyncSnap?: () => void; __resyncSnap?: () => void }).__resyncSnap = () => {
+      syncSections();
+    };
 
     const handleResize = () => {
       snap.resize();

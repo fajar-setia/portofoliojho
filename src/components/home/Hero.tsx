@@ -14,17 +14,7 @@ export default function Hero() {
     return (
         <section ref={containerRef} id="Home" className="relative flex min-h-screen items-center justify-center px-6">
             <div className="w-full text-center">
-                {/* Hi */}
-                <motion.p
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="mb-3 text-left md:ml-36 text-base font-bold text-black sm:text-xl"
-                >
-                    Hi
-                </motion.p>
-
-                {/* Main Heading */}
+                {/* Main Heading & Hi Wrapper */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -32,9 +22,20 @@ export default function Hero() {
                         duration: 0.7,
                         delay: 0.1,
                     }}
-                    className="flex flex-wrap items-center justify-center gap-x-12 text-5xl font-medium tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+                    className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-8 md:gap-x-12 text-5xl font-medium tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
                 >
-                    <span>I'm</span>
+                    {/* Grup "Hi" dan "I'm" agar "Hi" selalu berada presisi di atas "I'm" */}
+                    <div className="relative flex flex-col items-start">
+                        <motion.span
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
+                            className="absolute -top-7 left-0 text-base font-bold text-black sm:-top-9 sm:text-xl md:-top-11 md:text-2xl"
+                        >
+                            Hi
+                        </motion.span>
+                        <span>I'm</span>
+                    </div>
 
                     <span>(</span>
 
@@ -60,7 +61,7 @@ export default function Hero() {
                         duration: 0.6,
                         delay: 0.3,
                     }}
-                    className="mt-4 text-base sm:text-lg md:text-xl"
+                    className="mt-6 text-base sm:text-lg md:text-xl"
                 >
                     And My Name is{" "}
                     <span className="bg-black px-1 text-white">

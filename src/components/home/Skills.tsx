@@ -1,17 +1,43 @@
-import { motion } from "framer-motion";
-import type { Variants } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import type {Variants} from "framer-motion"
 
-const skillsList: string[] = [
-    "UI Design",
-    "UX Research",
-    "Wireframing",
-    "Prototyping",
-    "Usability",
-    "Figma",
+interface SkillItem {
+    name: string;
+    image: string;
+}
+
+const skillsData: SkillItem[] = [
+    {
+        name: "UI Design",
+        image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1000&auto=format&fit=crop",
+    },
+    {
+        name: "UX Research",
+        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop",
+    },
+    {
+        name: "Wireframing",
+        image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&auto=format&fit=crop",
+    },
+    {
+        name: "Prototyping",
+        image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=1000&auto=format&fit=crop",
+    },
+    {
+        name: "Usability",
+        image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=1000&auto=format&fit=crop",
+    },
+    {
+        name: "Figma",
+        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop",
+    },
 ];
 
 export default function Skills() {
-    // Berikan tipe Variants eksplisit pada objek animasi
+    // State untuk menyimpan index skill yang sedang di-hover (default: 0 / UI Design)
+    const [hoveredIndex, setHoveredIndex] = useState<number>(0);
+
     const containerVariants: Variants = {
         hidden: { opacity: 0 },
         visible: {
@@ -30,7 +56,7 @@ export default function Skills() {
             x: 0,
             transition: { 
                 duration: 0.5, 
-                ease: "easeOut" // Sekarang TypeScript akan mengenali nilai ini dengan benar
+                ease: "easeOut"
             },
         },
     };
@@ -65,21 +91,30 @@ export default function Skills() {
                         viewport={{ once: true }}
                         className="flex flex-col gap-3 sm:gap-4 md:gap-5"
                     >
-                        {skillsList.map((skill, index) => (
-                            <motion.li
-                                key={index}
-                                variants={itemVariants}
-                                whileHover={{ x: 10 }}
-                                transition={{ duration: 0.2 }}
-                                className="cursor-default text-2xl font-normal tracking-tight sm:text-3xl md:text-4xl"
-                            >
-                                {skill}
-                            </motion.li>
-                        ))}
+                        {skillsData.map((skill, index) => {
+                            const isHovered = hoveredIndex === index;
+
+                            return (
+                                <motion.li
+                                    key={index}
+                                    variants={itemVariants}
+                                    whileHover={{ x: 10 }}
+                                    transition={{ duration: 0.2 }}
+                                    onMouseEnter={() => setHoveredIndex(index)}
+                                    className={`cursor-pointer text-2xl font-normal tracking-tight transition-colors duration-200 sm:text-3xl md:text-4xl ${
+                                        isHovered
+                                            ? "text-[var(--hitam)] font-medium font-semibold"
+                                            : "text-neutral-400 hover:text-black"
+                                    }`}
+                                >
+                                    {skill.name}
+                                </motion.li>
+                            );
+                        })}
                     </motion.ul>
                 </div>
 
-                {/* Kolom Kanan: Gambar Showcase */}
+                {/* Kolom Kanan: Gambar Showcase yang Berganti Saat Hover */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -87,12 +122,19 @@ export default function Skills() {
                     viewport={{ once: true }}
                     className="flex w-full justify-center md:w-1/2"
                 >
-                    <div className="relative h-[320px] w-full max-w-md overflow-hidden rounded-2xl shadow-sm sm:h-[400px] md:h-[480px]">
-                        <img
-                            src="https://media.discordapp.net/attachments/771872445460250644/1544038792158117998/Rectangle_121.png?ex=6a970dae&is=6a95bc2e&hm=48ab93d77b0371efe7120eac714bb0bf25bb08aeb254150dfe8f3e1f9dba3348&=&format=webp&quality=lossless"
-                            alt="Skills & Workspace"
-                            className="h-full w-full object-cover"
-                        />
+                    <div className="relative h-[320px] w-full max-w-md overflow-hidden rounded-2xl shadow-md sm:h-[400px] md:h-[480px]">
+                        <AnimatePresence mode="wait">
+                            <motion.img
+                                key={hoveredIndex}
+                                src={skillsData[hoveredIndex].image}
+                                alt={skillsData[hoveredIndex].name}
+                                initial={{ opacity: 0, scale: 1.05 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                                className="h-full w-full object-cover"
+                            />
+                        </AnimatePresence>
                     </div>
                 </motion.div>
             </div>
