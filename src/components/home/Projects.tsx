@@ -63,7 +63,7 @@ export default function Projects() {
     setIsAnimating(true);
     setDirection(-1);
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+      prevIndex === 0 ? projects.length - 1 : prevIndex - 1,
     );
   };
 
@@ -122,9 +122,9 @@ export default function Projects() {
 
         {/* Card Container */}
         <div className="relative my-auto flex w-full flex-1 items-center justify-center overflow-hidden">
-          <AnimatePresence 
-            mode="wait" 
-            custom={direction} 
+          <AnimatePresence
+            mode="wait"
+            custom={direction}
             onExitComplete={() => setIsAnimating(false)}
           >
             <motion.div
@@ -186,7 +186,10 @@ export default function Projects() {
         {/* Navigation & Progress Bar Bottom */}
         <div className="flex shrink-0 items-center justify-between gap-4 pt-4">
           {/* Progress Bars (Dilengkapi key={currentIndex} agar animasi berjalan otomatis saat slide berganti) */}
-          <div key={currentIndex} className="flex flex-1 items-center gap-2.5 md:flex-none">
+          <div
+            key={currentIndex}
+            className="flex flex-1 items-center gap-2.5 md:flex-none"
+          >
             {projects.map((_, index) => (
               <button
                 key={index}
@@ -203,8 +206,8 @@ export default function Projects() {
                       index === currentIndex
                         ? "100%"
                         : index < currentIndex
-                        ? "100%"
-                        : "0%",
+                          ? "100%"
+                          : "0%",
                   }}
                   transition={{
                     duration: index === currentIndex ? AUTO_PLAY_DURATION : 0.2,
