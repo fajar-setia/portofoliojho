@@ -89,7 +89,7 @@ export default function Skills() {
                 >
                     <div className="relative h-[320px] w-full max-w-md overflow-hidden rounded-2xl shadow-sm sm:h-[400px] md:h-[480px]">
                         <img
-                            src="https://imgs.search.brave.com/GkF8uUMRlWNm2GzBw9zvqHRaLvdOKY-6-umhSPeEEWE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YTQuZ2lwaHkuY29t/L21lZGlhL3YxLlky/bGtQVGM1TUdJM05q/RXhPSEUwTVc4ek16/RnFlVFZpTm1ScWNX/azBOalY1TVhKdk9Y/ZzBPVGhqTTJvMU5X/ZHZNWGs1T0NabGNE/MTJNVjluYVdaelgz/TmxZWEpqYUNaamRE/MW4vNVQzdVllS3Ix/UEU2eGhmTmNYLzIw/MC5naWY.gif"
+                            src="https://media.discordapp.net/attachments/771872445460250644/1544038792158117998/Rectangle_121.png?ex=6a970dae&is=6a95bc2e&hm=48ab93d77b0371efe7120eac714bb0bf25bb08aeb254150dfe8f3e1f9dba3348&=&format=webp&quality=lossless"
                             alt="Skills & Workspace"
                             className="h-full w-full object-cover"
                         />

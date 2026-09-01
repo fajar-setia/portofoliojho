@@ -18,7 +18,7 @@ export default function About() {
                     className="h-80 w-64 flex-shrink-0 overflow-hidden rounded-xl md:h-[360px] md:w-[280px]"
                 >
                     <img
-                        src="https://imgs.search.brave.com/D_v-OIfhQm05q1CSaPKEwFURHrI11kEYgfMGRObQRpQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGlj/a2VybHkucHN0YXRp/Yy5uZXQvc3RpY2tl/cl9wYWNrL091bTlr/UFM4S0dlbHR0R3ZO/TkI4US81VjZQRUUv/MTYvLTc1MTUxMDMz/Ni53ZWJw" // Ganti dengan path foto kamu
+                        src="https://media.discordapp.net/attachments/771872445460250644/1544038256201568287/image_5.png?ex=6a970d2f&is=6a95bbaf&hm=4277cbcb324c7ba96063b084a7f7e344ecdb5f7021fc700be35103da8ae9dcd3&=&format=webp&quality=lossless" // Ganti dengan path foto kamu
                         alt="Jhoifha"
                         className="h-full w-full object-cover"
                     />

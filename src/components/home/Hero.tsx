@@ -1,8 +1,18 @@
 import { motion } from "framer-motion";
+import { useRef } from "react";
+import heroImage from "../../assets/image/hero.png";
+import { useCursorTrail } from "../../hooks/useCursorTrail";
 
 export default function Hero() {
+    const containerRef = useRef<HTMLElement>(null);
+    
+    // Initialize cursor trail effect
+    useCursorTrail({
+        containerRef: containerRef as React.RefObject<HTMLElement | null>,
+    });
+
     return (
-        <section id="Home" className="relative flex min-h-screen items-center justify-center px-6">
+        <section ref={containerRef} id="Home" className="relative flex min-h-screen items-center justify-center px-6">
             <div className="w-full max-w-6xl text-center">
                 {/* Hi */}
                 <motion.p
@@ -31,7 +41,7 @@ export default function Hero() {
                     {/* Profile Image */}
                     <div className="h-16 w-16 overflow-hidden rounded-md sm:h-20 sm:w-20 md:h-24 md:w-24">
                         <img
-                            src="https://media1.tenor.com/m/tfP3Qtu5VvIAAAAd/meme-kucing.gif"
+                            src={heroImage}
                             alt="Profile"
                             className="h-full w-full object-cover"
                         />
