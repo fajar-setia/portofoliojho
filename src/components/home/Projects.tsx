@@ -49,18 +49,31 @@ const AUTO_PLAY_DURATION = 5;
 export default function Projects() {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [direction, setDirection] = useState<number>(1);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   const handleNext = () => {
+    if (isAnimating) return;
     setDirection(1);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
   };
 
   const handlePrev = () => {
+    if (isAnimating) return;
     setDirection(-1);
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? projects.length - 1 : prevIndex - 1
     );
   };
+
+  // Disable navigation during animation
+  useEffect(() => {
+    setIsAnimating(true);
+    const timer = setTimeout(() => {
+      setIsAnimating(false);
+    }, 500); // Matches motion transition duration
+
+    return () => clearTimeout(timer);
+  }, [currentIndex]);
 
   // Auto-play timer
   useEffect(() => {
@@ -170,15 +183,17 @@ export default function Projects() {
         {/* Navigation & Progress Bar Bottom */}
         <div className="flex shrink-0 items-center justify-between gap-4 pt-4">
           {/* Progress Bars */}
-          <div className="flex flex-1 items-center gap-3">
+          <div className="flex flex-1 items-center gap-[10px]">
             {projects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => {
+                  if (isAnimating) return;
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
                 }}
-                className="h-2 flex-1 overflow-hidden rounded-full bg-neutral-300/60 transition-colors"
+                className="h-2 md:h-[24px] flex-1 md:w-[295px] overflow-hidden rounded-full bg-[#DFDFDF] transition-colors"
+                disabled={isAnimating}
               >
                 <motion.div
                   className="h-full rounded-full"
@@ -202,20 +217,22 @@ export default function Projects() {
           </div>
 
           {/* Arrow Navigation */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-[10px]">
             <button
               onClick={handlePrev}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 transition-colors hover:bg-neutral-200 active:scale-95 sm:h-11 sm:w-11"
+              disabled={isAnimating}
+              className="flex h-10 w-10 sm:h-11 sm:w-11 md:h-[64px] md:w-[64px] items-center justify-center rounded-full border border-[var(--hitam)] transition-colors hover:bg-neutral-100 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Previous Project"
             >
-              <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5" />
+              <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
             </button>
             <button
               onClick={handleNext}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 transition-colors hover:bg-neutral-200 active:scale-95 sm:h-11 sm:w-11"
+              disabled={isAnimating}
+              className="flex h-10 w-10 sm:h-11 sm:w-11 md:h-[64px] md:w-[64px] items-center justify-center rounded-full border border-[var(--hitam)] transition-colors hover:bg-neutral-100 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Next Project"
             >
-              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
             </button>
           </div>
         </div>
