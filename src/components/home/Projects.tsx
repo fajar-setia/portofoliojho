@@ -94,7 +94,7 @@ export default function Projects() {
       className="relative flex h-screen w-full flex-col justify-between overflow-hidden px-6 py-8 md:py-12"
       style={{ backgroundColor: "var(--putih)", color: "var(--hitam)" }}
     >
-      <div className="mx-auto flex h-full w-full max-w-6xl flex-col justify-between">
+      <div className="mx-auto flex h-full w-full max-w-[1192px] flex-col justify-between">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -119,26 +119,26 @@ export default function Projects() {
               animate="center"
               exit="exit"
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="relative flex w-full items-center overflow-hidden rounded-3xl p-5 sm:p-8 md:p-10"
+              className="relative flex w-full items-center overflow-hidden rounded-3xl p-5 sm:p-8 md:h-[494px] md:px-[51px] md:py-[76.5px]"
               style={{
                 backgroundColor: "var(--hitam)",
                 color: "var(--putih)",
               }}
             >
-              <div className="grid w-full grid-cols-1 items-center gap-6 py-2 md:grid-cols-12 md:gap-8">
+              <div className="flex w-full flex-col items-center gap-6 md:flex-row md:gap-[180px] py-2">
                 {/* Image Left */}
-                <div className="overflow-hidden rounded-2xl md:col-span-6">
+                <div className="w-full overflow-hidden rounded-[18px] md:w-[490px] md:h-[341px] md:shrink-0">
                   <motion.img
                     src={activeProject.image}
                     alt={activeProject.title}
-                    className="h-[200px] w-full object-cover sm:h-[220px] md:h-[250px] lg:h-[270px]"
+                    className="w-full h-[220px] md:w-[490px] md:h-[341px] object-cover"
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.4 }}
                   />
                 </div>
 
                 {/* Content Right */}
-                <div className="flex flex-col justify-center md:col-span-6">
+                <div className="flex flex-col justify-center flex-1 min-w-0">
                   <span className="text-xs font-light text-neutral-400 sm:text-sm">
                     {activeProject.category}
                   </span>
