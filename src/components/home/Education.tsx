@@ -61,7 +61,7 @@ export default function Education() {
       className="relative flex h-screen w-full items-center justify-center overflow-hidden px-6 py-8 md:py-12"
       style={{ backgroundColor: "var(--putih)", color: "var(--hitam)" }}
     >
-      <div className="mx-auto flex h-full max-w-5xl flex-col justify-center">
+      <div className="mx-auto flex h-full max-w-6xl flex-col justify-center">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -88,7 +88,7 @@ export default function Education() {
               key={item.id}
               variants={itemVariants}
               whileHover={{ x: 8, transition: { duration: 0.2 } }}
-              className="flex flex-col items-start gap-4 rounded-2xl p-4 transition-all duration-300 hover:bg-neutral-200/50 sm:flex-row sm:items-center sm:gap-8 sm:p-6"
+              className="flex flex-col items-start gap-4 rounded-2xl p-4 transition-all duration-300 hover:bg-neutral-200/50 sm:flex-row sm:items-center sm:gap-10 sm:p-6"
             >
               {/* Box Logo Kiri */}
               <div className="flex h-24 w-44 shrink-0 items-center justify-center rounded-2xl bg-white p-4 shadow-sm border border-neutral-200/80 sm:h-28 sm:w-52">

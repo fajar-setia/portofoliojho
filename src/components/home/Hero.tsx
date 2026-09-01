@@ -30,7 +30,7 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
-                            className="absolute -top-7 left-0 text-base font-bold text-black sm:-top-9 sm:text-xl md:-top-11 md:text-2xl"
+                            className="absolute -top-7 left-0 text-base font-light tracking-[0.05em] text-black sm:-top-9 sm:text-xl md:-top-11 md:text-2xl"
                         >
                             Hi
                         </motion.span>
@@ -40,7 +40,7 @@ export default function Hero() {
                     <span>(</span>
 
                     {/* Profile Image */}
-                    <div className="h-16 w-16 overflow-hidden rounded-md sm:h-20 sm:w-20 md:h-24 md:w-24">
+                    <div className="h-16 w-16 overflow-hidden rounded-md sm:h-20 sm:w-20 md:h-[120px] md:w-[152px]">
                         <img
                             src={heroImage}
                             alt="Profile"

@@ -19,30 +19,41 @@ const projects: Project[] = [
     description:
       "Engineered a seamless corporate website and online storefront featuring a custom conversational AI. This intelligent chatbot automates product inquiries and guides users through the catalog, accelerating the purchasing journey and elevating customer support.",
     image:
-      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&auto=format&fit=crop",
+      "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/project/vanilna%20(2).png?raw=true",
     link: "#",
   },
   {
     id: 2,
-    category: "UI/UX Design | Mobile App | Health",
-    title: "PulseCare",
+    category: "UI/UX Design | Responsive Website | Court Booking",
+    title: "Padelo",
     description:
-      "Designed an intuitive telemedicine application that connects patients directly with specialized doctors, featuring real-time video consultations, automated appointment booking, and encrypted digital health records.",
+      "Padeló is a responsive padel club website designed as a bootcamp capstone. It combines company profile content with an intuitive court-booking experience, featuring an interactive court map inspired by cinema seat selection.",
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+      "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/project/p_padelo.png?raw=true",
     link: "#",
   },
   {
     id: 3,
-    category: "Web Application | SaaS | Dashboard",
-    title: "MetricsHub",
+    category: "UI/UX Design | Web Development | Agency",
+    title: "RasiCode",
     description:
-      "Created a complex data analytics platform with customizable dashboards, real-time metrics tracking, and automated report generation tailored for enterprise-level marketing teams.",
+      "Designed and developed a modern agency website showcasing RasiCode’s web development services, projects, and expertise, enhanced with interactive animations to create a more engaging and dynamic browsing experience.",
     image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
+      "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/project/p_rasicode.png?raw=true",
+    link: "#",
+  },
+  {
+    id: 4,
+    category: "UI/UX Design | Mobile App",
+    title: "Cekkas",
+    description:
+      "Cekkas is an AI-powered fridge management app that helps users track ingredients, receive personalized nutrition suggestions, and discover recipe ideas through a conversational assistant.",
+    image:
+      "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/project/p_cekkkas.png?raw=true",
     link: "#",
   },
 ];
+
 
 const AUTO_PLAY_DURATION = 5;
 
@@ -116,7 +127,7 @@ export default function Projects() {
           className="shrink-0"
         >
           <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl md:text-5xl">
-            Featured <br /> Projects
+           Projects
           </h2>
         </motion.div>
 
@@ -141,13 +152,13 @@ export default function Projects() {
                 color: "var(--putih)",
               }}
             >
-              <div className="grid w-full grid-cols-1 items-center gap-6 py-2 md:grid-cols-12 md:gap-8">
+              <div className="grid w-full grid-cols-1 items-center gap-6 py-2 md:grid-cols-12 md:gap-20">
                 {/* Image Left */}
                 <div className="overflow-hidden rounded-2xl md:col-span-6">
                   <motion.img
                     src={activeProject.image}
                     alt={activeProject.title}
-                    className="h-[200px] w-full object-cover sm:h-[220px] md:h-[250px] lg:h-[270px]"
+                    className="h-[200px] w-full object-cover sm:h-[220px] md:h-[250px] lg:h-[300px]"
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.4 }}
                   />
@@ -173,8 +184,8 @@ export default function Projects() {
                       className="group inline-flex items-center gap-2 text-xs font-medium transition-colors hover:opacity-80 sm:text-sm"
                       style={{ color: "var(--putih)" }}
                     >
-                      View Case Study
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                      {/* View Case Study
+                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /> */}
                     </a>
                   </div>
                 </div>

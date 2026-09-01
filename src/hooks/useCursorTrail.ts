@@ -2,13 +2,10 @@ import { useEffect, useRef } from 'react';
 
 // Trail images from Discord CDN
 const imageArray = [
-  'https://media.discordapp.net/attachments/850422431381192734/1544220622630948874/Salinan_dari_IND-rasi_code_slide6.png?ex=6a97b706&is=6a966586&hm=5b1252b3f60446069663bdd850f42d1de252621b95767b5303992b398459a60c&=&format=webp&quality=lossless&width=1536&height=864',
-
-  'https://media.discordapp.net/attachments/850422431381192734/1544220623558021211/Salinan_dari_IND-rasi_code_slide5.png?ex=6a97b706&is=6a966586&hm=9401ad6d9a8062b1d5d4f84bfbb412c2c5c6ed08a12bbc81acf636e40702ea85&=&format=webp&quality=lossless&width=1536&height=864',
-
-  'https://media.discordapp.net/attachments/850422431381192734/1544220624182837258/Salinan_dari_IND-rasi_code_slide2.png?ex=6a97b707&is=6a966587&hm=16c73357e5c09d875fe8dbd4d6a72caadca5a3f0dbef0c1ca9ae294f954ddec8&=&format=webp&quality=lossless&width=1536&height=864',
-
-  'https://media.discordapp.net/attachments/850422431381192734/1544220625000857600/padelo.png?ex=6a97b707&is=6a966587&hm=e447ff0913d18cc88ee881141de32cb3289c4d499610f804c8b37b0d32ab0db4&=&format=webp&quality=lossless&width=1536&height=864'
+    '',
+    '',
+    '',
+    ''
 ].filter(Boolean);
 
 interface TrailImage {

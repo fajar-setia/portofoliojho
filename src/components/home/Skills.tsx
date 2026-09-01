@@ -10,27 +10,27 @@ interface SkillItem {
 const skillsData: SkillItem[] = [
     {
         name: "UI Design",
-        image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1000&auto=format&fit=crop",
+        image: "https://raw.githubusercontent.com/jhoifhaWinola/portofolio_/refs/heads/main/public/images/skill/s_UI%20Design.png",
     },
     {
         name: "UX Research",
-        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000&auto=format&fit=crop",
+        image: "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/skill/s_UX%20Research.png?raw=true",
     },
     {
         name: "Wireframing",
-        image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&auto=format&fit=crop",
+        image: "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/skill/s_Wireframing.png?raw=true",
     },
     {
         name: "Prototyping",
-        image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=1000&auto=format&fit=crop",
+        image: "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/skill/s_prototyping.png?raw=true",
     },
     {
         name: "Usability",
-        image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=1000&auto=format&fit=crop",
+        image: "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/skill/usabi.jpg?raw=true",
     },
     {
         name: "Figma",
-        image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop",
+        image: "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/skill/s_figma.jpeg?raw=true",
     },
 ];
 
@@ -131,7 +131,7 @@ export default function Skills() {
                                 initial={{ opacity: 0, scale: 1.05 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
-                                transition={{ duration: 0.4, ease: "easeInOut" }}
+                                transition={{ duration: 0.1, ease: "easeInOut" }}
                                 className="h-full w-full object-cover"
                             />
                         </AnimatePresence>
