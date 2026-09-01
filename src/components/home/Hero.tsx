@@ -13,13 +13,13 @@ export default function Hero() {
 
     return (
         <section ref={containerRef} id="Home" className="relative flex min-h-screen items-center justify-center px-6">
-            <div className="w-full max-w-6xl text-center">
+            <div className="w-full text-center">
                 {/* Hi */}
                 <motion.p
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="mb-3 text-left md:ml-22 text-base font-bold text-black sm:text-xl"
+                    className="mb-3 text-left md:ml-36 text-base font-bold text-black sm:text-xl"
                 >
                     Hi
                 </motion.p>
@@ -32,7 +32,7 @@ export default function Hero() {
                         duration: 0.7,
                         delay: 0.1,
                     }}
-                    className="flex flex-wrap items-center justify-center gap-x-3 text-5xl font-medium tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+                    className="flex flex-wrap items-center justify-center gap-x-12 text-5xl font-medium tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
                 >
                     <span>I'm</span>
 

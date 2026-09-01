@@ -75,7 +75,7 @@ export default function Footer() {
               href="mailto:Example@gmail.com"
               className="group inline-flex items-center gap-3 text-lg font-light text-neutral-200 transition-opacity hover:opacity-80 sm:text-xl md:text-2xl"
             >
-              <span>Example@gmail</span>
+              <span>jhoifhawinola@gmail.com</span>
               <svg
                 className="h-6 w-6 transition-transform group-hover:scale-110"
                 fill="none"
