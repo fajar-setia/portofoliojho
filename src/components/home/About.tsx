@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, Download } from "lucide-react";
+import aboutImage from "../../assets/image/about.png";
 
 export default function About() {
     return (
@@ -18,7 +19,7 @@ export default function About() {
                     className="h-80 w-64 flex-shrink-0 overflow-hidden rounded-xl md:h-[487px] md:w-[365px]"
                 >
                     <img
-                        src="https://raw.githubusercontent.com/jhoifhaWinola/portofolio_/refs/heads/main/public/images/about.png" // Ganti dengan path foto kamu
+                        src={aboutImage}
                         alt="Jhoifha"
                         className="w-full h-full object-cover"
                     />

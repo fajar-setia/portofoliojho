@@ -1,12 +1,16 @@
 import { useEffect, useRef } from 'react';
+import projectVanilna from '../assets/image/project/p_vanilna.png';
+import projectPadelo from '../assets/image/project/p_padelo.png';
+import projectRasiCode from '../assets/image/project/p_rasicode.png';
+import projectCekkkas from '../assets/image/project/p_cekkkas.png';
 
-// Trail images from Discord CDN
+// Trail images - reuse project images
 const imageArray = [
-    '',
-    '',
-    '',
-    ''
-].filter(Boolean);
+    projectVanilna,
+    projectPadelo,
+    projectRasiCode,
+    projectCekkkas,
+]
 
 interface TrailImage {
     id: number;

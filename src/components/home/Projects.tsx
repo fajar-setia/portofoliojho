@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import projectVanilna from "../../assets/image/project/p_vanilna.png";
+import projectPadelo from "../../assets/image/project/p_padelo.png";
+import projectRasiCode from "../../assets/image/project/p_rasicode.png";
+import projectCekkkas from "../../assets/image/project/p_cekkkas.png";
 
 interface Project {
   id: number;
@@ -18,8 +22,7 @@ const projects: Project[] = [
     title: "Vanilna",
     description:
       "Engineered a seamless corporate website and online storefront featuring a custom conversational AI. This intelligent chatbot automates product inquiries and guides users through the catalog, accelerating the purchasing journey and elevating customer support.",
-    image:
-      "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/project/vanilna%20(2).png?raw=true",
+    image: projectVanilna,
     link: "#",
   },
   {
@@ -28,8 +31,7 @@ const projects: Project[] = [
     title: "Padelo",
     description:
       "Padeló is a responsive padel club website designed as a bootcamp capstone. It combines company profile content with an intuitive court-booking experience, featuring an interactive court map inspired by cinema seat selection.",
-    image:
-      "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/project/p_padelo.png?raw=true",
+    image: projectPadelo,
     link: "#",
   },
   {
@@ -38,8 +40,7 @@ const projects: Project[] = [
     title: "RasiCode",
     description:
       "Designed and developed a modern agency website showcasing RasiCode’s web development services, projects, and expertise, enhanced with interactive animations to create a more engaging and dynamic browsing experience.",
-    image:
-      "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/project/p_rasicode.png?raw=true",
+    image: projectRasiCode,
     link: "#",
   },
   {
@@ -48,8 +49,7 @@ const projects: Project[] = [
     title: "Cekkas",
     description:
       "Cekkas is an AI-powered fridge management app that helps users track ingredients, receive personalized nutrition suggestions, and discover recipe ideas through a conversational assistant.",
-    image:
-      "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/project/p_cekkkas.png?raw=true",
+    image: projectCekkkas,
     link: "#",
   },
 ];

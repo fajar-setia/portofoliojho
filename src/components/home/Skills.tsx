@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type {Variants} from "framer-motion"
+import skillUIDesign from "../../assets/image/skill/s_UI Design.png";
+import skillUXResearch from "../../assets/image/skill/s_UX Research.png";
+import skillWireframing from "../../assets/image/skill/s_Wireframing.png";
+import skillPrototyping from "../../assets/image/skill/s_prototyping.png";
+import skillUsability from "../../assets/image/skill/Usability.jpg";
+import skillFigma from "../../assets/image/skill/s_figma.jpeg";
 
 interface SkillItem {
     name: string;
@@ -10,27 +16,27 @@ interface SkillItem {
 const skillsData: SkillItem[] = [
     {
         name: "UI Design",
-        image: "https://raw.githubusercontent.com/jhoifhaWinola/portofolio_/refs/heads/main/public/images/skill/s_UI%20Design.png",
+        image: skillUIDesign,
     },
     {
         name: "UX Research",
-        image: "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/skill/s_UX%20Research.png?raw=true",
+        image: skillUXResearch,
     },
     {
         name: "Wireframing",
-        image: "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/skill/s_Wireframing.png?raw=true",
+        image: skillWireframing,
     },
     {
         name: "Prototyping",
-        image: "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/skill/s_prototyping.png?raw=true",
+        image: skillPrototyping,
     },
     {
         name: "Usability",
-        image: "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/skill/usabi.jpg?raw=true",
+        image: skillUsability,
     },
     {
         name: "Figma",
-        image: "https://github.com/jhoifhaWinola/portofolio_/blob/main/public/images/skill/s_figma.jpeg?raw=true",
+        image: skillFigma,
     },
 ];
 
