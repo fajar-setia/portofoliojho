@@ -16,7 +16,7 @@ export default function About() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="h-80 w-64 flex-shrink-0 overflow-hidden rounded-xl md:h-[487px] md:w-[365px]"
+                    className="h-[250px] w-[200px] flex-shrink-0 overflow-hidden rounded-xl md:h-[487px] md:w-[365px]"
                 >
                     <img
                         src={aboutImage}
@@ -31,10 +31,10 @@ export default function About() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="flex flex-col gap-12"
+                    className="flex flex-col gap-2 md:gap-12"
                 >
                     {/* Header Utama */}
-                    <h2 className="text-2xl font-normal leading-tight sm:text-3xl md:text-4xl">
+                    <h2 className="text-xl font-normal leading-tight sm:text-3xl md:text-4xl">
                         I'm Jhoifha — a UI/UX Designer bridging design and technology to create intuitive, functional, and purposeful digital experiences.
                     </h2>
 
