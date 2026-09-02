@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import projectVanilna from "../../assets/image/project/p_vanilna.png";
 import projectPadelo from "../../assets/image/project/p_padelo.png";
 import projectRasiCode from "../../assets/image/project/p_rasicode.png";
@@ -54,7 +54,6 @@ const projects: Project[] = [
   },
 ];
 
-
 const AUTO_PLAY_DURATION = 5;
 
 export default function Projects() {
@@ -74,7 +73,7 @@ export default function Projects() {
     setIsAnimating(true);
     setDirection(-1);
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+      prevIndex === 0 ? projects.length - 1 : prevIndex - 1,
     );
   };
 
@@ -126,16 +125,16 @@ export default function Projects() {
           viewport={{ once: true }}
           className="shrink-0"
         >
-          <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl md:text-5xl">
-           Projects
-          </h2>
+        <h2 className="text-4xl font-normal tracking-tight sm:text-5xl md:text-6xl">
+            Featured <br /> Projects
+        </h2>
         </motion.div>
 
         {/* Card Container */}
         <div className="relative my-auto flex w-full flex-1 items-center justify-center overflow-hidden">
-          <AnimatePresence 
-            mode="wait" 
-            custom={direction} 
+          <AnimatePresence
+            mode="wait"
+            custom={direction}
             onExitComplete={() => setIsAnimating(false)}
           >
             <motion.div
@@ -195,15 +194,18 @@ export default function Projects() {
         </div>
 
         {/* Navigation & Progress Bar Bottom */}
-        <div className="flex shrink-0 items-center justify-between gap-4 pt-4">
-          {/* Progress Bars (Dilengkapi key={currentIndex} agar animasi berjalan otomatis saat slide berganti) */}
-          <div key={currentIndex} className="flex flex-1 items-center gap-2.5 md:flex-none">
+        <div className="flex w-full shrink-0 items-center justify-between gap-4 pt-4 sm:gap-6">
+          {/* Progress Bars */}
+          <div
+            key={currentIndex}
+            className="flex flex-1 items-center gap-2 sm:gap-3"
+          >
             {projects.map((_, index) => (
               <button
                 key={index}
                 disabled={isAnimating}
                 onClick={() => handleBarClick(index)}
-                className="h-2 flex-1 overflow-hidden rounded-full bg-[#DFDFDF] transition-colors md:h-6 md:w-[295px] md:flex-none"
+                className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#DFDFDF] transition-colors sm:h-3.5 md:h-5"
               >
                 <motion.div
                   className="h-full rounded-full"
@@ -214,8 +216,8 @@ export default function Projects() {
                       index === currentIndex
                         ? "100%"
                         : index < currentIndex
-                        ? "100%"
-                        : "0%",
+                          ? "100%"
+                          : "0%",
                   }}
                   transition={{
                     duration: index === currentIndex ? AUTO_PLAY_DURATION : 0.2,
@@ -227,22 +229,22 @@ export default function Projects() {
           </div>
 
           {/* Arrow Navigation */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <button
               disabled={isAnimating}
               onClick={handlePrev}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--hitam)] transition-colors hover:bg-neutral-200 active:scale-95 disabled:pointer-events-none disabled:opacity-50 md:h-[64px] md:w-[64px]"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--hitam)] transition-colors hover:bg-neutral-200 active:scale-95 disabled:pointer-events-none disabled:opacity-50 sm:h-12 sm:w-12 md:h-14 md:w-14"
               aria-label="Previous Project"
             >
-              <ArrowLeft className="h-4 w-4 md:h-6 md:w-6" />
+              <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
             </button>
             <button
               disabled={isAnimating}
               onClick={handleNext}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--hitam)] transition-colors hover:bg-neutral-200 active:scale-95 disabled:pointer-events-none disabled:opacity-50 md:h-[64px] md:w-[64px]"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--hitam)] transition-colors hover:bg-neutral-200 active:scale-95 disabled:pointer-events-none disabled:opacity-50 sm:h-12 sm:w-12 md:h-14 md:w-14"
               aria-label="Next Project"
             >
-              <ArrowRight className="h-4 w-4 md:h-6 md:w-6" />
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
             </button>
           </div>
         </div>
