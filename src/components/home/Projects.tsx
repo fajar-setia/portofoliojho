@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import projectVanilna from "../../assets/image/project/p_vanilna.png";
+import projectPadelo from "../../assets/image/project/p_padelo.png";
+import projectRasiCode from "../../assets/image/project/p_rasicode.png";
+import projectCekkkas from "../../assets/image/project/p_cekkkas.png";
 
 interface Project {
   id: number;
@@ -18,28 +22,34 @@ const projects: Project[] = [
     title: "Vanilna",
     description:
       "Engineered a seamless corporate website and online storefront featuring a custom conversational AI. This intelligent chatbot automates product inquiries and guides users through the catalog, accelerating the purchasing journey and elevating customer support.",
-    image:
-      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&auto=format&fit=crop",
+    image: projectVanilna,
     link: "#",
   },
   {
     id: 2,
-    category: "UI/UX Design | Mobile App | Health",
-    title: "PulseCare",
+    category: "UI/UX Design | Responsive Website | Court Booking",
+    title: "Padelo",
     description:
-      "Designed an intuitive telemedicine application that connects patients directly with specialized doctors, featuring real-time video consultations, automated appointment booking, and encrypted digital health records.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
+      "Padeló is a responsive padel club website designed as a bootcamp capstone. It combines company profile content with an intuitive court-booking experience, featuring an interactive court map inspired by cinema seat selection.",
+    image: projectPadelo,
     link: "#",
   },
   {
     id: 3,
-    category: "Web Application | SaaS | Dashboard",
-    title: "MetricsHub",
+    category: "UI/UX Design | Web Development | Agency",
+    title: "RasiCode",
     description:
-      "Created a complex data analytics platform with customizable dashboards, real-time metrics tracking, and automated report generation tailored for enterprise-level marketing teams.",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop",
+      "Designed and developed a modern agency website showcasing RasiCode’s web development services, projects, and expertise, enhanced with interactive animations to create a more engaging and dynamic browsing experience.",
+    image: projectRasiCode,
+    link: "#",
+  },
+  {
+    id: 4,
+    category: "UI/UX Design | Mobile App",
+    title: "Cekkas",
+    description:
+      "Cekkas is an AI-powered fridge management app that helps users track ingredients, receive personalized nutrition suggestions, and discover recipe ideas through a conversational assistant.",
+    image: projectCekkkas,
     link: "#",
   },
 ];
@@ -54,6 +64,7 @@ export default function Projects() {
   const handleNext = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 600); // Safety fallback reset
     setDirection(1);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
   };
@@ -61,6 +72,7 @@ export default function Projects() {
   const handlePrev = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 600); // Safety fallback reset
     setDirection(-1);
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? projects.length - 1 : prevIndex - 1,
@@ -70,14 +82,17 @@ export default function Projects() {
   const handleBarClick = (index: number) => {
     if (isAnimating || index === currentIndex) return;
     setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 600); // Safety fallback reset
     setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
   };
 
-  // Auto-play Timer (Perpindahan Otomatis)
+  // Auto-play Timer (Perpindahan Otomatis yang anti-stuck)
   useEffect(() => {
     const timer = setTimeout(() => {
-      handleNext();
+      setIsAnimating(false);
+      setDirection(1);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
     }, AUTO_PLAY_DURATION * 1000);
 
     return () => clearTimeout(timer);
@@ -115,9 +130,9 @@ export default function Projects() {
           viewport={{ once: true }}
           className="shrink-0"
         >
-          <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl md:text-5xl">
+        <h2 className="text-4xl font-normal tracking-tight sm:text-5xl md:text-6xl">
             Featured <br /> Projects
-          </h2>
+        </h2>
         </motion.div>
 
         {/* Card Container */}
@@ -141,13 +156,13 @@ export default function Projects() {
                 color: "var(--putih)",
               }}
             >
-              <div className="grid w-full grid-cols-1 items-center gap-6 py-2 md:grid-cols-12 md:gap-8">
+              <div className="grid w-full grid-cols-1 items-center gap-6 py-2 md:grid-cols-12 md:gap-20">
                 {/* Image Left */}
                 <div className="overflow-hidden rounded-2xl md:col-span-6">
                   <motion.img
                     src={activeProject.image}
                     alt={activeProject.title}
-                    className="h-[200px] w-full object-cover sm:h-[220px] md:h-[250px] lg:h-[270px]"
+                    className="h-[200px] w-full object-cover sm:h-[220px] md:h-[250px] lg:h-[300px]"
                     whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.4 }}
                   />
@@ -173,8 +188,8 @@ export default function Projects() {
                       className="group inline-flex items-center gap-2 text-xs font-medium transition-colors hover:opacity-80 sm:text-sm"
                       style={{ color: "var(--putih)" }}
                     >
-                      View Case Study
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                      {/* View Case Study
+                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /> */}
                     </a>
                   </div>
                 </div>
@@ -184,20 +199,27 @@ export default function Projects() {
         </div>
 
         {/* Navigation & Progress Bar Bottom */}
+<<<<<<< HEAD
         <div className="flex shrink-0 items-center justify-between gap-4 pt-4">
           {/* Progress Bars (Dilengkapi key={currentIndex} agar animasi berjalan otomatis saat slide berganti) */}
           <div
             key={currentIndex}
             className="flex flex-1 items-center gap-2.5 md:flex-none"
           >
+=======
+        <div className="flex w-full shrink-0 items-center justify-between gap-4 pt-4 sm:gap-6">
+          {/* Progress Bars */}
+          <div className="flex flex-1 items-center gap-2 sm:gap-3">
+>>>>>>> upstream/main
             {projects.map((_, index) => (
               <button
                 key={index}
                 disabled={isAnimating}
                 onClick={() => handleBarClick(index)}
-                className="h-2 flex-1 overflow-hidden rounded-full bg-[#DFDFDF] transition-colors md:h-6 md:w-[295px] md:flex-none"
+                className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#DFDFDF] transition-colors sm:h-3.5 md:h-5"
               >
                 <motion.div
+                  key={`${index}-${currentIndex}`}
                   className="h-full rounded-full"
                   style={{ backgroundColor: "var(--hitam)" }}
                   initial={{ width: index < currentIndex ? "100%" : "0%" }}
@@ -210,7 +232,7 @@ export default function Projects() {
                           : "0%",
                   }}
                   transition={{
-                    duration: index === currentIndex ? AUTO_PLAY_DURATION : 0.2,
+                    duration: index === currentIndex ? AUTO_PLAY_DURATION : 0.3,
                     ease: index === currentIndex ? "linear" : "easeInOut",
                   }}
                 />
@@ -219,22 +241,22 @@ export default function Projects() {
           </div>
 
           {/* Arrow Navigation */}
-          <div className="flex items-center gap-2.5">
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <button
               disabled={isAnimating}
               onClick={handlePrev}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--hitam)] transition-colors hover:bg-neutral-200 active:scale-95 disabled:pointer-events-none disabled:opacity-50 md:h-[64px] md:w-[64px]"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--hitam)] transition-colors hover:bg-neutral-200 active:scale-95 disabled:pointer-events-none disabled:opacity-50 sm:h-12 sm:w-12 md:h-14 md:w-14"
               aria-label="Previous Project"
             >
-              <ArrowLeft className="h-4 w-4 md:h-6 md:w-6" />
+              <ArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
             </button>
             <button
               disabled={isAnimating}
               onClick={handleNext}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--hitam)] transition-colors hover:bg-neutral-200 active:scale-95 disabled:pointer-events-none disabled:opacity-50 md:h-[64px] md:w-[64px]"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--hitam)] transition-colors hover:bg-neutral-200 active:scale-95 disabled:pointer-events-none disabled:opacity-50 sm:h-12 sm:w-12 md:h-14 md:w-14"
               aria-label="Next Project"
             >
-              <ArrowRight className="h-4 w-4 md:h-6 md:w-6" />
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
             </button>
           </div>
         </div>
