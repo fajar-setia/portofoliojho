@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
 import Snap from "lenis/snap";
 import Hero from "../components/home/Hero";
@@ -6,9 +6,12 @@ import About from "../components/home/About";
 import Projects from "../components/home/Projects";
 import Skills from "../components/home/Skills";
 import Education from "../components/home/Education";
+import Preloader from "../components/common/Preloader";
+import { AnimatePresence } from "framer-motion";
 
 export default function LandingPage() {
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const setRef = (index: number) => (el: HTMLDivElement | null) => {
     sectionRefs.current[index] = el;
@@ -76,6 +79,12 @@ export default function LandingPage() {
   }, []);
 
   return (
+    <>
+
+    <AnimatePresence mode="wait">
+        {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+      </AnimatePresence>
+ 
     <main className="relative w-full bg-[var(--putih)]">
       <div
         ref={setRef(0)}
@@ -117,5 +126,7 @@ export default function LandingPage() {
         <Education />
       </div>
     </main>
+       
+    </>
   );
 }

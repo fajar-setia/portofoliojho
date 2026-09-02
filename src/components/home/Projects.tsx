@@ -130,9 +130,9 @@ export default function Projects() {
           viewport={{ once: true }}
           className="shrink-0"
         >
-        <h2 className="text-4xl font-normal tracking-tight sm:text-5xl md:text-6xl">
+          <h2 className="text-4xl font-normal tracking-tight sm:text-5xl md:text-6xl">
             Featured <br /> Projects
-        </h2>
+          </h2>
         </motion.div>
 
         {/* Card Container */}
@@ -188,8 +188,7 @@ export default function Projects() {
                       className="group inline-flex items-center gap-2 text-xs font-medium transition-colors hover:opacity-80 sm:text-sm"
                       style={{ color: "var(--putih)" }}
                     >
-                      {/* View Case Study
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /> */}
+                      {/* View Case Study */}
                     </a>
                   </div>
                 </div>
@@ -199,18 +198,12 @@ export default function Projects() {
         </div>
 
         {/* Navigation & Progress Bar Bottom */}
-<<<<<<< HEAD
-        <div className="flex shrink-0 items-center justify-between gap-4 pt-4">
-          {/* Progress Bars (Dilengkapi key={currentIndex} agar animasi berjalan otomatis saat slide berganti) */}
-          <div
-            key={currentIndex}
-            className="flex flex-1 items-center gap-2.5 md:flex-none"
-          >
-=======
         <div className="flex w-full shrink-0 items-center justify-between gap-4 pt-4 sm:gap-6">
           {/* Progress Bars */}
-          <div className="flex flex-1 items-center gap-2 sm:gap-3">
->>>>>>> upstream/main
+          <div
+            key={currentIndex}
+            className="flex flex-1 items-center gap-2 sm:gap-3"
+          >
             {projects.map((_, index) => (
               <button
                 key={index}
