@@ -64,6 +64,7 @@ export default function Projects() {
   const handleNext = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 600); // Safety fallback reset
     setDirection(1);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
   };
@@ -71,6 +72,7 @@ export default function Projects() {
   const handlePrev = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 600); // Safety fallback reset
     setDirection(-1);
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? projects.length - 1 : prevIndex - 1,
@@ -80,14 +82,17 @@ export default function Projects() {
   const handleBarClick = (index: number) => {
     if (isAnimating || index === currentIndex) return;
     setIsAnimating(true);
+    setTimeout(() => setIsAnimating(false), 600); // Safety fallback reset
     setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
   };
 
-  // Auto-play Timer (Perpindahan Otomatis)
+  // Auto-play Timer (Perpindahan Otomatis yang anti-stuck)
   useEffect(() => {
     const timer = setTimeout(() => {
-      handleNext();
+      setIsAnimating(false);
+      setDirection(1);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
     }, AUTO_PLAY_DURATION * 1000);
 
     return () => clearTimeout(timer);
@@ -196,10 +201,7 @@ export default function Projects() {
         {/* Navigation & Progress Bar Bottom */}
         <div className="flex w-full shrink-0 items-center justify-between gap-4 pt-4 sm:gap-6">
           {/* Progress Bars */}
-          <div
-            key={currentIndex}
-            className="flex flex-1 items-center gap-2 sm:gap-3"
-          >
+          <div className="flex flex-1 items-center gap-2 sm:gap-3">
             {projects.map((_, index) => (
               <button
                 key={index}
@@ -208,6 +210,7 @@ export default function Projects() {
                 className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#DFDFDF] transition-colors sm:h-3.5 md:h-5"
               >
                 <motion.div
+                  key={`${index}-${currentIndex}`}
                   className="h-full rounded-full"
                   style={{ backgroundColor: "var(--hitam)" }}
                   initial={{ width: index < currentIndex ? "100%" : "0%" }}
@@ -220,7 +223,7 @@ export default function Projects() {
                           : "0%",
                   }}
                   transition={{
-                    duration: index === currentIndex ? AUTO_PLAY_DURATION : 0.2,
+                    duration: index === currentIndex ? AUTO_PLAY_DURATION : 0.3,
                     ease: index === currentIndex ? "linear" : "easeInOut",
                   }}
                 />

@@ -77,8 +77,11 @@ export default function Footer() {
             viewport={{ once: true }}
             className="flex flex-col items-start gap-4 text-right md:items-end"
           >
+            {/* // ubah link email disini */}
             <a
-              href="mailto:Example@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=jhoifhawinola@gmail.com" // ubah link email disini
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 text-lg font-light text-neutral-200 transition-opacity hover:opacity-80 sm:text-xl md:text-2xl"
             >
               <span>jhoifhawinola@gmail.com</span>
@@ -101,13 +104,14 @@ export default function Footer() {
               </svg>
             </a>
 
+            {/* // ubah link linkedin disini */}
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/jhoifha-winola/" // ubah link linkedin disini
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 text-lg font-light text-neutral-200 transition-opacity hover:opacity-80 sm:text-xl md:text-2xl"
             >
-              <span>Example</span>
+              <span>Jhoifha Winola</span>
               {/* SVG LinkedIn */}
               <svg
                 className="h-6 w-6 transition-transform group-hover:scale-110"

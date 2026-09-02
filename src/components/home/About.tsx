@@ -45,8 +45,11 @@ export default function About() {
 
                     {/* Tombol Aksi */}
                     <div className="mt-2 flex flex-wrap items-center gap-4">
+                        {/* // ubah link email disini */}
                         <a
-                            href="mailto:emailkamu@example.com"
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=jhoifhawinola@gmail.com" // ubah link email disini
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium transition-transform hover:scale-105 active:scale-95"
                             style={{ backgroundColor: "var(--biru)", color: "var(--putih)" }}
                         >
@@ -54,9 +57,11 @@ export default function About() {
                             Mail Me
                         </a>
 
+                        {/* // ubah link resume disini */}
                         <a
-                            href="/path-to-resume.pdf"
-                            download
+                            href="https://drive.google.com/drive/folders/1qVIWn5TcbfoY8X7eVxYC7hHfGD-XnvTQ?usp=sharing" // ubah link resume disini
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-medium transition-transform hover:scale-105 active:scale-95"
                             style={{ backgroundColor: "var(--putih)", color: "var(--hitam)" }}
                         >
